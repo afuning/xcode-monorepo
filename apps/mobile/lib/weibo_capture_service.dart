@@ -45,6 +45,25 @@ class WeiboCaptureService {
 
   Future<void> _captureAndUpload() async {
     // TODO: Use Android Accessibility APIs to open Weibo, capture data, and upload.
-    await _androidBridge.openWeibo();
+    try {
+      await _androidBridge.openWeiboAndEnterTopic(topicName: '超话');
+      final superLikeCount = await _androidBridge.readSuperLikeCount();
+      if (superLikeCount == null) {
+        await _androidBridge.reportCaptureStatus(
+          success: false,
+          message: 'Super Like count not found.',
+        );
+        return;
+      }
+      await _androidBridge.reportCaptureStatus(
+        success: true,
+        message: 'Captured Super Like count: $superLikeCount',
+      );
+    } catch (error) {
+      await _androidBridge.reportCaptureStatus(
+        success: false,
+        message: error.toString(),
+      );
+    }
   }
 }
