@@ -36,7 +36,7 @@ class _HomeScreenState extends State<HomeScreen> {
   void initState() {
     super.initState();
     _captureService = WeiboCaptureService(
-      interval: const Duration(minutes: 15),
+      interval: const Duration(minutes: 20),
     )..start();
   }
 
@@ -56,8 +56,8 @@ class _HomeScreenState extends State<HomeScreen> {
         child: Padding(
           padding: EdgeInsets.all(24),
           child: Text(
-            'This Flutter app periodically opens Weibo, captures data, and '
-            'uploads it to the backend on a schedule.',
+            'This Flutter app opens Weibo every 20 minutes starting at midnight, '
+            'captures data, and uploads it to the backend.',
             textAlign: TextAlign.center,
           ),
         ),
