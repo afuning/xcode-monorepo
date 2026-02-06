@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+import 'weibo_capture_service.dart';
+
 void main() {
   runApp(const MonorepoApp());
 }
@@ -20,8 +22,29 @@ class MonorepoApp extends StatelessWidget {
   }
 }
 
-class HomeScreen extends StatelessWidget {
+class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
+
+  @override
+  State<HomeScreen> createState() => _HomeScreenState();
+}
+
+class _HomeScreenState extends State<HomeScreen> {
+  late final WeiboCaptureService _captureService;
+
+  @override
+  void initState() {
+    super.initState();
+    _captureService = WeiboCaptureService(
+      interval: const Duration(minutes: 15),
+    )..start();
+  }
+
+  @override
+  void dispose() {
+    _captureService.stop();
+    super.dispose();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -33,8 +56,8 @@ class HomeScreen extends StatelessWidget {
         child: Padding(
           padding: EdgeInsets.all(24),
           child: Text(
-            'This Flutter app periodically opens Weibo to capture data and '
-            'uploads it to the backend.',
+            'This Flutter app periodically opens Weibo, captures data, and '
+            'uploads it to the backend on a schedule.',
             textAlign: TextAlign.center,
           ),
         ),
