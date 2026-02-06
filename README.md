@@ -4,6 +4,7 @@ This monorepo contains multiple apps:
 
 - **apps/web**: A standard Next.js (App Router) project.
 - **apps/mobile**: A Flutter project.
+- **apps/android**: Android native layer for Accessibility-based Weibo automation.
 
 ## Getting started
 
