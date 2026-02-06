@@ -56,8 +56,9 @@ class _HomeScreenState extends State<HomeScreen> {
         child: Padding(
           padding: EdgeInsets.all(24),
           child: Text(
-            'This Flutter app opens Weibo every 20 minutes starting at midnight, '
-            'captures data, and uploads it to the backend.',
+            'This Flutter app uses Android Accessibility to open Weibo every '
+            '20 minutes starting at midnight, captures data, and uploads it '
+            'to the backend.',
             textAlign: TextAlign.center,
           ),
         ),

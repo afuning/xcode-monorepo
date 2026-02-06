@@ -38,6 +38,6 @@ class WeiboCaptureService {
   }
 
   Future<void> _captureAndUpload() async {
-    // TODO: Integrate with Android APIs to open Weibo, capture data, and upload.
+    // TODO: Use Android Accessibility APIs to open Weibo, capture data, and upload.
   }
 }
