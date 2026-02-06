@@ -1,9 +1,15 @@
 import 'dart:async';
 
+import 'android_bridge.dart';
+
 class WeiboCaptureService {
-  WeiboCaptureService({required this.interval});
+  WeiboCaptureService({
+    required this.interval,
+    AndroidBridge? androidBridge,
+  }) : _androidBridge = androidBridge ?? AndroidBridge();
 
   final Duration interval;
+  final AndroidBridge _androidBridge;
   Timer? _timer;
   Timer? _initialTimer;
 
@@ -39,5 +45,6 @@ class WeiboCaptureService {
 
   Future<void> _captureAndUpload() async {
     // TODO: Use Android Accessibility APIs to open Weibo, capture data, and upload.
+    await _androidBridge.openWeibo();
   }
 }
